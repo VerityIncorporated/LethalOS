@@ -2,6 +2,8 @@
 
 Lethal Company terminal wrapper which allows you to create and manage your own menus/modules for the in game terminal.
 
+This requires BepInEx: https://builds.bepinex.dev/projects/bepinex_be/674/BepInEx-Unity.Mono-win-x64-6.0.0-be.674%2B82077ec.zip
+
 Example Menu:
 
 ```cs
