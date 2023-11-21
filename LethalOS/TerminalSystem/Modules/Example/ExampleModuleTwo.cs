@@ -4,7 +4,7 @@ namespace LethalOS.TerminalSystem.Modules.Example;
 
 public class ExampleModuleTwo : Module
 {
-    public ExampleModuleTwo() : base("Example Module", "Hello, this is an example module.", "example module") {}
+    public ExampleModuleTwo() : base("Example Module Two", "Hello, this is an example module aswell.", "example module two") {}
 
     protected override void OnEnable()
     {
