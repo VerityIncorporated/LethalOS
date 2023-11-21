@@ -16,6 +16,6 @@ mainMenu.AddCategory(exampleCategory); //Add Category to the menu
 Manager.AddMenu(mainMenu); //Add everything in the menu to the terminal
 ```
 
-![Menu Image](https://big.cock.rentals/sale/wjoat9oa.png)
+![Menu Image](https://r2.e-z.host/73b83a6e-5101-4059-9426-8abb720d5508/wjoat9oa.png)
 
-![Menu Image](https://big.cock.rentals/sale/ov4417d0.png)
+![Menu Image](https://r2.e-z.host/73b83a6e-5101-4059-9426-8abb720d5508/ov4417d0.png)
