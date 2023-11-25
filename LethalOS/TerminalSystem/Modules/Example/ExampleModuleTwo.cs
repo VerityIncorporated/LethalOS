@@ -1,4 +1,5 @@
 using LethalOS.TerminalSystem.Bases;
+using LethalOS.Utils;
 
 namespace LethalOS.TerminalSystem.Modules.Example;
 

@@ -4,7 +4,10 @@ using HarmonyLib;
 using LethalOS.TerminalSystem;
 using LethalOS.TerminalSystem.Bases;
 using LethalOS.TerminalSystem.Modules.Example;
+using LethalOS.Utils;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace LethalOS;
 
@@ -20,6 +23,10 @@ public class Loader : BaseUnityPlugin
         var plugin = gameObject.AddComponent<Plugin>();
         plugin.hideFlags = HideFlags.HideAndDontSave;
         DontDestroyOnLoad(plugin);
+
+        var lethalTerminal = gameObject.AddComponent<LethalTerminal>();
+        lethalTerminal.hideFlags = HideFlags.HideAndDontSave;
+        DontDestroyOnLoad(lethalTerminal);
     }
 }
 
@@ -33,18 +40,6 @@ public class Plugin : MonoBehaviour
         {
             module.OnUpdate();
         }
-        
-        if (!Manager.Initialized()) return;
-        
-        //Menu Items
-
-        var mainMenu = new Menu("LethalOS", "Made by Verity", "lethalos");
-        var exampleCategory = new Category("Example", "Hello, this is an example category.", "example");
-        exampleCategory.AddModule(new ExampleModule());
-        exampleCategory.AddModule(new ExampleModuleTwo());
-        
-        mainMenu.AddCategory(exampleCategory);
-        Manager.AddMenu(mainMenu);
     }
 
     private void FixedUpdate()
