@@ -1,0 +1,5 @@
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\publish\LethalOS.Example.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\publish\LethalOS.Example.deps.json
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\publish\LethalOS.Example.pdb
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\publish\LethalOS.API.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\publish\LethalOS.API.pdb

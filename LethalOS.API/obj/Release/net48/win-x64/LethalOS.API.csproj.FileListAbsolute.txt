@@ -1,0 +1,9 @@
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\bin\Release\net48\win-x64\LethalOS.API.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\bin\Release\net48\win-x64\LethalOS.API.pdb
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.csproj.AssemblyReference.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.AssemblyInfoInputs.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.AssemblyInfo.cs
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.csproj.CoreCompileInputs.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Release\net48\win-x64\LethalOS.API.pdb

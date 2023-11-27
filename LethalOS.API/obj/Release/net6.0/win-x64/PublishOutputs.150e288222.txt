@@ -1,0 +1,3 @@
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\bin\Release\net6.0\win-x64\publish\LethalOS.API.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\bin\Release\net6.0\win-x64\publish\LethalOS.API.deps.json
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\bin\Release\net6.0\win-x64\publish\LethalOS.API.pdb

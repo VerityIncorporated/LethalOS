@@ -1,0 +1,5 @@
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Debug\netstandard2.1\LethalOS.API.csproj.AssemblyReference.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Debug\netstandard2.1\LethalOS.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Debug\netstandard2.1\LethalOS.API.AssemblyInfoInputs.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Debug\netstandard2.1\LethalOS.API.AssemblyInfo.cs
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.API\obj\Debug\netstandard2.1\LethalOS.API.csproj.CoreCompileInputs.cache

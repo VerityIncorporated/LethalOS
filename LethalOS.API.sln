@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LethalOS.API", "LethalOS.API\LethalOS.API.csproj", "{805E01A9-0370-4D10-9325-DDE5B7718075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LethalOS.Example", "LethalOS.Example\LethalOS.Example.csproj", "{829BA5CD-A3FD-4F39-A06C-09ED2BA42897}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{805E01A9-0370-4D10-9325-DDE5B7718075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805E01A9-0370-4D10-9325-DDE5B7718075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805E01A9-0370-4D10-9325-DDE5B7718075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805E01A9-0370-4D10-9325-DDE5B7718075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829BA5CD-A3FD-4F39-A06C-09ED2BA42897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829BA5CD-A3FD-4F39-A06C-09ED2BA42897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829BA5CD-A3FD-4F39-A06C-09ED2BA42897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829BA5CD-A3FD-4F39-A06C-09ED2BA42897}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\LethalOS.Example.deps.json
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\LethalOS.Example.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\LethalOS.Example.pdb
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\LethalOS.API.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\bin\Release\net6.0\win-x64\LethalOS.API.pdb
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.csproj.AssemblyReference.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.AssemblyInfoInputs.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.AssemblyInfo.cs
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.csproj.CoreCompileInputs.cache
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.csproj.CopyComplete
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\refint\LethalOS.Example.dll
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\LethalOS.Example.pdb
+C:\Users\NathanRoberts\RiderProjects\LethalOS.API\LethalOS.Example\obj\Release\net6.0\win-x64\ref\LethalOS.Example.dll
