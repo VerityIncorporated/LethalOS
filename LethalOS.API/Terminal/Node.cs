@@ -24,13 +24,17 @@ internal abstract class Node
     private static void CreateCategoryNode(Category category, Menu menu)
     {
         var node = ScriptableObject.CreateInstance<TerminalNode>();
-        node.displayText = $"[{category.Name}]: {category.Description}\nC:\\{RemoveWhiteSpace(menu.MenuName)}\\{category.Name}>\n\n";
+        node.displayText = $"[{menu.MenuName}]: {menu.MenuDescription}\nC:\\{RemoveWhiteSpace(menu.MenuName)}\\{category.Name}>\n\n";
         node.clearPreviousText = true;
         node.name = category.Keyword;
 
         foreach (var module in category.GetModules())
         {
             node.displayText += $">{module.DisplayName.ToUpper()}\n{module.DisplayDescription}\n\n";
+        }
+
+        foreach (var module in category.GetModules())
+        {
             CreateModuleNode(module, node);
         }
         
@@ -44,6 +48,8 @@ internal abstract class Node
         moduleNode.clearPreviousText = true;
         moduleNode.name = moduleBase.Keyword;
         AddNode(moduleNode.name, moduleNode);
+        
+        moduleBase.OnAdded();
     }
 
     private static void AddNode(string keyword, TerminalNode node)

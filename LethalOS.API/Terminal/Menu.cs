@@ -19,6 +19,11 @@ public class Menu
     /// Gets or sets the terminal keyword of the menu.
     /// </summary>
     public string MenuKeyword { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the author of this mod.
+    /// </summary>
+    public string ModAuthor { get; set; }
 
     private List<Category> MenuCategories { get; set; }
 
@@ -27,12 +32,14 @@ public class Menu
     /// </summary>
     /// <param name="menuName">The name of the menu.</param>
     /// <param name="menuDescription">The description of the menu.</param>
-    /// <param name="menuKeyword">The terminal keyword for this menu</param>
-    public Menu(string menuName, string menuDescription, string menuKeyword)
+    /// <param name="menuKeyword">The terminal keyword for this menu.</param>
+    /// <param name="modAuthor">The person who created the mod.</param>
+    public Menu(string menuName, string menuDescription, string menuKeyword, string modAuthor)
     {
         MenuName = menuName;
         MenuDescription = menuDescription;
         MenuKeyword = menuKeyword;
+        ModAuthor = modAuthor;
         MenuCategories = new List<Category>();
     }
 
@@ -43,6 +50,11 @@ public class Menu
     public void AddCategory(Category category)
     {
         MenuCategories.Add(category);
+    }
+
+    public void Finished()
+    {
+        Manager.AddMenu(this);
     }
 
     /// <summary>

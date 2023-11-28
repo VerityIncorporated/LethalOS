@@ -1,3 +1,5 @@
+using LethalOS.API.Terminal;
+
 namespace LethalOS.API;
 
 /// <summary>
@@ -19,6 +21,11 @@ public class ModuleBase
     /// Gets the keyword typed into the terminal to activate the module.
     /// </summary>
     public string Keyword { get; private set; }
+    
+    /// <summary>
+    /// Gets a value indicating whether the module is a toggle module.
+    /// </summary>
+    public bool Toggled { get; private set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether the module is currently enabled.
@@ -31,11 +38,13 @@ public class ModuleBase
     /// <param name="displayName">The display name of the module.</param>
     /// <param name="displayDescription">The display description of the module.</param>
     /// <param name="keyword">The keyword to activate the module.</param>
-    protected ModuleBase(string displayName, string displayDescription, string keyword)
+    /// <param name="toggled">The module is automatically disabled after running the enabled code.</param>
+    protected ModuleBase(string displayName, string displayDescription, string keyword, bool toggled = false)
     {
         DisplayName = displayName;
         DisplayDescription = displayDescription;
         Keyword = keyword;
+        Toggled = toggled;
     }
 
     /// <summary>
@@ -45,6 +54,14 @@ public class ModuleBase
     {
         Enabled = !Enabled;
 
+        if (Toggled)
+        {
+            HUDManager.Instance.DisplayTip($"{DisplayName} Toggled!", $"{DisplayDescription}");
+            OnEnabled();
+            OnDisabled();
+            return;
+        }
+        
         if (Enabled)
         {
             HUDManager.Instance.DisplayTip($"{DisplayName} Enabled!", $"{DisplayDescription}");
@@ -56,6 +73,22 @@ public class ModuleBase
             OnDisabled();
         }
     }
+
+    /// <summary>
+    /// Changes the text in the terminal.
+    /// </summary>
+    /// <param name="newText">The text to be shown in the terminal.</param>
+    /// <param name="clearText">Determines whether to keep the previous text in the terminal.</param>
+    protected void ChangeScreenText(string newText, bool clearText = false)
+    {
+        Manager.ChangeScreenText(newText, clearText);
+    }
+    
+    /// <summary>
+    /// Called when the module is added to the terminal.
+    /// Override this method to perform actions when the module is added to the terminal.
+    /// </summary>
+    public virtual void OnAdded(){}
 
     /// <summary>
     /// Called when the module is enabled.

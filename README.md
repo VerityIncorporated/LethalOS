@@ -10,7 +10,7 @@ Add the LethalOS.API.dll as a dependency in your project, and make sure to add t
 PS: Pressing Insert will allow you to use the terminal from anywhere in the game.
 
 ```
-[BepInDependency("verity.lethalos.api", "1.0.0")]
+[BepInDependency("verity.lethalos.api")]
 ```
 
 ## Usage Example
@@ -26,7 +26,7 @@ using LethalOS.API.Terminal;
 namespace LethalOS.Example
 {
     [BepInPlugin("verity.lethalos.example", "LethalOS API Example", "1.0.0")]
-    [BepInDependency("verity.lethalos.api", "1.0.0")]
+    [BepInDependency("verity.lethalos.api")]
     public class Plugin : BaseUnityPlugin
     {
         public static ManualLogSource LogSource { get; set; } = null!;
@@ -39,13 +39,13 @@ namespace LethalOS.Example
 
         private void Start()
         {
-            var exampleMenu = new Menu("LethalOS", "Made by Verity <3", "lethalos"); // Create Menu
+            var exampleMenu = new Menu("LethalOS", "Example Menu using LethalOS", "lethalos", "Verity"); // Create Menu, Name, Description, Keyword, Author
             var exampleCategory = new Category("ExampleCategory", "This is an example category.", "examplecategory"); // Create Category
             exampleCategory.AddModule(new Modules.Example()); // Add module to Category
 
             exampleMenu.AddCategory(exampleCategory); // Add Category to Menu
 
-            Manager.AddMenu(exampleMenu);
+            exampleMenu.Finished(); // Must do this once the menu categories & modules have been added!
         }
     }
 }
@@ -58,7 +58,7 @@ using LethalOS.API;
 
 namespace LethalOS.Example.Modules;
 
-public class Example : ModuleBase //Extends off of LethalOS.API.ModuleBase
+public class Example : ModuleBase //Inherits off of LethalOS.API.ModuleBase
 {
     public Example() : base("ExampleModule", "This is an example module!", "examplemodule") {}
 

@@ -8,24 +8,25 @@ using UnityEngine.SceneManagement;
 
 namespace LethalOS.API;
 
-[BepInPlugin("verity.lethalos.api", "LethalOS API", "1.0.0.0")]
+[BepInPlugin("verity.lethalos.api", "LethalOS API", "1.0.4")]
 internal class Plugin : BaseUnityPlugin
 {
     private static readonly Harmony Harmony = new("lethalos");
-    public static ManualLogSource LogSource { get; set; } = null!;
+    private static ManualLogSource LogSource { get; set; } = null!;
     private bool _terminalSetup;
     
     private void Awake()
     {
         LogSource = Logger;
         LogSource.LogInfo("LethalOS API Loaded!");
+        
         SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
         
         var insertKeyAction = new InputAction(binding: "<Keyboard>/insert");
         insertKeyAction.performed += OnInsertKeyPressed;
         insertKeyAction.Enable();
     }
-    
+
     private void OnInsertKeyPressed(InputAction.CallbackContext obj)
     {
         var terminal = FindObjectOfType<global::Terminal>();
@@ -49,23 +50,34 @@ internal class Plugin : BaseUnityPlugin
         if (arg0.name.ToLower() == "samplescenerelay" && !_terminalSetup)
         { 
             _terminalSetup = true;
-
+            
             foreach (var menu in Manager.Menus)
             {
-                LogSource.LogInfo($"Menu Created: {menu.MenuName}");
+                LogSource.LogInfo($"Menu Create: {menu.MenuName}");
                 Node.CreateMenuNode(menu);
             }
-        
+            
+            var lethalOSMenu = new Menu("Menus", "Showing Menus", "menus", "Verity");
+
+            foreach (var showMenusCategory in Manager.Menus.Select(menu => new Category($"{menu.MenuName} - [Made by {menu.ModAuthor}]", $"{menu.MenuDescription}", "placeholder")))
+            {
+                lethalOSMenu.AddCategory(showMenusCategory);
+            }
+            
+            Node.CreateMenuNode(lethalOSMenu);
+            
             var original = typeof(global::Terminal).GetMethod(nameof(global::Terminal.LoadNewNode));
-            var prefix = typeof(TerminalPatch).GetMethod(nameof(TerminalPatch.CatchNodes));
-            Harmony.Patch(original, new HarmonyMethod(prefix));
+            var postfix = typeof(TerminalPatch).GetMethod(nameof(TerminalPatch.CatchNodes));
+            Harmony.Patch(original, postfix: new HarmonyMethod(postfix));
         }
         
         var terminal = FindObjectOfType<global::Terminal>();
         if (terminal is null) return;
-            
+        
+        terminal.terminalNodes.specialNodes[13].displayText = ">MOONS\nTo see the list of moons the autopilot can route to.\n\n>STORE\nTo see the company store's selection of useful items.\n\n>BESTIARY\nTo see the list of wildlife on record.\n\n>STORAGE\nTo access objects placed into storage.\n\n>OTHER\nTo see the list of other commands.\n\n>MENUS\nTo see the list of menus created using LethalOS.\n\n";;
+        
         terminal.terminalUIScreen.renderMode = RenderMode.ScreenSpaceOverlay;
-        terminal.terminalUIScreen.scaleFactor += 1.35f;
+        terminal.terminalUIScreen.scaleFactor = 2.35f;
     }
 
     private void Update()
@@ -97,7 +109,9 @@ internal class Plugin : BaseUnityPlugin
     {
         public static void CatchNodes(TerminalNode node)
         {
-            var module = Manager.Modules.FirstOrDefault(module => module.Keyword.ToLower() == node.name);
+            if (node.name == "placeholder") return;
+            
+            var module = Manager.Modules.FirstOrDefault(module => string.Equals(module.Keyword, node.name, StringComparison.CurrentCultureIgnoreCase));
             module?.ToggleModule();
         }
     }
