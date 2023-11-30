@@ -1,90 +1,124 @@
-# LethalOS API Example
+## Creating Menus, Categories, and Modules in LethalOS.API
 
-This example demonstrates how to use the LethalOS API to create menus, categories, and modules.
+## Introduction
 
-## Installation
+LethalOS.API provides a flexible system for managing modules within Lethal Company's terminal environment. This guide demonstrates how to create menus, categories, and modules using the API.
 
-Make sure you have BepInEx and LethalOS API installed in your game.
-Add the LethalOS.API.dll as a dependency in your project, and make sure to add this line to your project so that BepInEx loads it correctly. LethalOS.API.dll needs to be in the plugins folder alongside your plugin.
-
-PS: Pressing Insert will allow you to use the terminal from anywhere in the game.
-
-```
-[BepInDependency("verity.lethalos.api")]
-```
-
-## Usage Example
-
-### Plugin Setup
-All menus should be created on start or awake, before you load into a game. Once you load into a game the LethalOS API will add all of the created menus to the terminal, which is only done once.
-
+Creating a Menu
+-
 ```csharp
-using BepInEx;
-using BepInEx.Logging;
-using LethalOS.API.Terminal;
+// Creating a menu instance
+Menu mainMenu = new Menu("Main Menu", "Description of the main menu", "main", "John Doe");
 
-namespace LethalOS.Example
-{
-    [BepInPlugin("verity.lethalos.example", "LethalOS API Example", "1.0.0")]
-    [BepInDependency("verity.lethalos.api")]
-    public class Plugin : BaseUnityPlugin
-    {
-        public static ManualLogSource LogSource { get; set; } = null!;
-
-        private void Awake()
-        {
-            LogSource = Logger;
-            LogSource.LogInfo("LethalOS API Example Loaded!");
-        }
-
-        private void Start()
-        {
-            var exampleMenu = new Menu("LethalOS", "Example Menu using LethalOS", "lethalos", "Verity"); // Create Menu, Name, Description, Keyword, Author
-            var exampleCategory = new Category("ExampleCategory", "This is an example category.", "examplecategory"); // Create Category
-            exampleCategory.AddModule(new Modules.Example()); // Add module to Category
-
-            exampleMenu.AddCategory(exampleCategory); // Add Category to Menu
-
-            exampleMenu.Finished(); // Must do this once the menu categories & modules have been added!
-        }
-    }
-}
+// Finalizing and adding the menu to the terminal, do this after adding categories and their respective modules
+mainMenu.Finished();
 ```
 
-### Example Module
+Adding Categories to the Menu
+-
+```csharp
+// Creating a category instance
+Category moonCategory = new Category("Moon", "Moon-related modules", "moon");
+
+// Adding the category to the main menu, do this after adding the modules to the category
+mainMenu.AddCategory(moonCategory);
+```
+
+Adding Modules to Categories
+-
+Creating a Custom Module Class
 
 ```csharp
 using LethalOS.API;
 
-namespace LethalOS.Example.Modules;
-
-public class Example : ModuleBase //Inherits off of LethalOS.API.ModuleBase
+public class CustomModule : ModuleBase
 {
-    public Example() : base("ExampleModule", "This is an example module!", "examplemodule") {}
-
-    protected override void OnEnabled()
+    public CustomModule(string displayName, string displayDescription, string keyword, bool requiresHost, bool toggled)
+        : base(displayName, displayDescription, keyword, requiresHost, toggled)
     {
-        Plugin.LogSource.LogInfo("Enabled");
+        // Custom initialization code
     }
 
-    protected override void OnDisabled()
+    public override void OnAdded()
     {
-        Plugin.LogSource.LogInfo("Disabled");
+        // Custom Logic when the module is first added to the terminal
     }
 
-    public override void OnUpdate()
+    public override void OnEnabled()
     {
-        //Do action on update while enabled
+        // Custom logic when the module is enabled
+
+        //Change the current text on the terminal, does not effect the existing terminal node
+        ChangeScreenText($"There are currently {enemyCount} enemies alive! {outside} of which are outside!", true);
+
+        //Updates the current node with a new one, this will effect the existing terminal node
+        UpdateNode(newNode: );
     }
 
-    public override void OnFixedUpdate()
-    {
-        //Do action on fixed update while enabled
-    }
-    
-    public override void OnGui()
-    {
-        //Do action on gui while enabled
-    }
+    // Other overrideable lifecycle methods can be implemented here
+}
+```
+
+Adding Custom Modules to Categories
+```csharp
+// Creating a custom module instance
+CustomModule moonInfo = new CustomModule("MoonInfo", "Display moon information", "MoonInfo", false, false);
+
+// Adding the module to the 'moon' category
+moonCategory.AddModule(moonInfo);
+```
+
+Retrieving Modules from Categories
+-
+```csharp
+// Retrieving a module by its name from the 'moon' category
+ModuleBase retrievedModule = moonCategory.GetModuleByName("MoonInfo");
+// Retrieving a module by its class from the 'moon' category
+CustomModule moonModule = moonCategory.GetModule<CustomModule>();
+```
+
+Example Code
+-
+```csharp
+// Creating a menu instance
+Menu mainMenu = new Menu("Main Menu", "Description of the main menu", "main", "John Doe");
+
+// Creating a category instance
+Category moonCategory = new Category("Moon", "Moon-related modules", "moon");
+
+// Creating a custom module instance
+CustomModule moonInfo = new CustomModule("MoonInfo", "Display moon information", "MoonInfo", false, false);
+
+// Adding the module to the 'moon' category
+moonCategory.AddModule(moonInfo);
+
+// Adding the category to the main menu
+mainMenu.AddCategory(moonCategory);
+
+// Finalizing and adding the menu to the terminal
+mainMenu.Finished();
+
+// Retrieving a module by its name from the 'moon' category
+ModuleBase retrievedModule = moonCategory.GetModuleByName("MoonInfo");
+
+if (retrievedModule != null)
+{
+    Console.WriteLine("Module Found: " + retrievedModule.DisplayName);
+}
+else
+{
+    Console.WriteLine("Module Not Found.");
+}
+
+// Retrieving a module by its class from the 'moon' category
+CustomModule moonModule = moonCategory.GetModule<CustomModule>();
+
+if (moonModule != null)
+{
+    Console.WriteLine("Custom Module Found: " + moonModule.DisplayName);
+}
+else
+{
+    Console.WriteLine("Custom Module Not Found.");
 }
 ```
