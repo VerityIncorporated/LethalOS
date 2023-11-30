@@ -49,7 +49,7 @@ public class CustomModule : ModuleBase
         // Custom logic when the module is enabled
 
         //Change the current text on the terminal, does not effect the existing terminal node
-        ChangeScreenText($"There are currently {enemyCount} enemies alive! {outside} of which are outside!", true);
+        ChangeScreenText("New Text", true);
 
         //Updates the current node with a new one, this will effect the existing terminal node
         UpdateNode(newNode: );
